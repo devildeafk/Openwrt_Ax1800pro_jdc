@@ -14,9 +14,12 @@
 
 
 #替换为新版本golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-./scripts/feeds install -a -f
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+# ./scripts/feeds install -a -f
+# 将 ddns-go 及其 Luci 界面插件在编译配置中彻底关闭
+sed -i 's/CONFIG_PACKAGE_ddns-go=y/# CONFIG_PACKAGE_ddns-go is not set/' .config
+sed -i 's/CONFIG_PACKAGE_luci-app-ddns-go=y/# CONFIG_PACKAGE_luci-app-ddns-go is not set/' .config
 
 
 
