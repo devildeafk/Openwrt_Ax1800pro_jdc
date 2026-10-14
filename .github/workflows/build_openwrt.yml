@@ -127,6 +127,15 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: Setup Go environment
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.26.x' # 强制使用 1.26 或更高版本的 Go 语言环境
+
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
         
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
